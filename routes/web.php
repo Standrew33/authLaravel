@@ -30,3 +30,5 @@ Route::view('/dashboard', 'dashboard')->middleware('auth')->name('dashboard');
 
 Route::get('/login', [LoginController::class, 'create'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'store'])->middleware('guest');
+
+//Route::get('/profile', fn() => 'profile')->middleware('auth')->name('profile');
