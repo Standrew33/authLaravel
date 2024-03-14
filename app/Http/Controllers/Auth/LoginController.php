@@ -22,10 +22,10 @@ class LoginController extends Controller
             'password' => 'required|string'
         ]);
 
-        if (!Auth::attempt(/*$request->only('email', 'password')*/ $credentials)) {
+        if (!Auth::attempt(/*$request->only('email', 'password')*/ $credentials, $request->boolean('remember'))) {
             //TODO: Variant 2
             throw ValidationException::withMessages([
-                'email' => 'These credentials do not match our records.'
+                'email' => trans('auth.failed')
             ]);
             //TODO: Variant 1
 //            return back()->withInput()->withErrors([
@@ -33,6 +33,17 @@ class LoginController extends Controller
 //            ]);
         }
 
+        $request->session()->regenerate();
+
         return redirect()/*->route('dashboard')*/->intended(RouteServiceProvider::HOME);
+    }
+
+    public function destroy(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('welcome');
     }
 }
