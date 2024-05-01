@@ -96,7 +96,7 @@
                     </div>
 
                     <div class="mb-6">
-                        <label for="password_confirmation" class="block text-sm font-medium text-gray-700">password_confirmation</label>
+                        <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirm Password</label>
                         <div class="relative mt-1 rounded-md shadow-sm">
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3">
                                 <svg class="h-5 w-5 {{ $errors->has('password_confirmation') ? 'text-red-400' : 'text-gray-400' }}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -113,7 +113,7 @@
                             @endif
                         </div>
                         @error('password_confirmation')
-                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
 
